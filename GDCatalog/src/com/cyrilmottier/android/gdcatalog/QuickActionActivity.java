@@ -39,9 +39,9 @@ public class QuickActionActivity extends GDActivity {
         setActionBarContentView(R.layout.quick_action);
 
         prepareQuickActionBar();
-        prepareQuickActionGrid();
+        //prepareQuickActionGrid();
 
-        addActionBarItem(Type.Edit);
+        //addActionBarItem(Type.Edit);
     }
 
     public void onShowGrid(View v) {

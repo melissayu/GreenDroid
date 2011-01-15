@@ -29,9 +29,12 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
+import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.LinearLayout;
+
 
 import com.cyrilmottier.android.greendroid.R;
 
@@ -79,15 +82,16 @@ public class QuickActionBar extends QuickActionWidget {
     public void show(View anchor) {
         super.show(anchor);
         mScrollView.scrollTo(0, 0);
-        mRack.startAnimation(mRackAnimation);
+        //mRack.startAnimation(mRackAnimation);
     }
 
     @Override
     protected void onMeasureAndLayout(Rect anchorRect, View contentView) {
-
-        contentView.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+    	//mel
+    	
+        contentView.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         contentView.measure(MeasureSpec.makeMeasureSpec(getScreenWidth(), MeasureSpec.EXACTLY),
-                LayoutParams.WRAP_CONTENT);
+                ViewGroup.LayoutParams.WRAP_CONTENT);
 
         int rootHeight = contentView.getMeasuredHeight();
 
@@ -107,7 +111,7 @@ public class QuickActionBar extends QuickActionWidget {
         mQuickActions = quickActions;
 
         final LayoutInflater inflater = LayoutInflater.from(getContext());
-
+        
         for (QuickAction action : quickActions) {
             TextView view = (TextView) inflater.inflate(R.layout.gd_quick_action_bar_item, mQuickActionItems, false);
             view.setText(action.mTitle);
